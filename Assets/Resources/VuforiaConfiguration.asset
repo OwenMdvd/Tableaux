@@ -17,7 +17,7 @@ MonoBehaviour:
     ufoLicenseKey: QWZRMTg3RC8vLy8vQUFBQUtFZFZNSWhRMEVQWmxRUUR5UXNRQmdNWjh2d3RHbzRiL0xlVXB1a2Vkcnl5ODlrWWNoSjRod3dvNG5nYkF3Sk1lK1Fpb0x1RlNvVitBdTEzWFlqSWRTeEdVRnZPZ21EYVBpclEyc21tMUEwY2lUQzBYK2xMT2tXaHpoWm9zNFpYSHgwS2lwNUdwOXV6eURCVmo4bU94Sk11L2c4cHNtRWV1YkxHMGtYSGtDMGNVS2dyaWRXMHMwYUtDcW1rd1BRcXJBanBCdk5aR3grcFFBRUdmNjlqNnNlZFpNUWtqUDJ6Tkl5Y0djR1RDNCtLeFZHZVhEVHZNbElMOTM3aVBmZml6L0ZjaWZxNVRzaXNod0p3S2ZISXA3V0JyanQ2SWNZYmZHVGJaWkVnMjBpYTdvcTgxRXdXdXVrdkZGS2pnbUFIeHRGdXl4QzlFTVdVR1FDYUJxMWMvMTZEdnlCWWcvcUI4d1NuU1dJZi9rRUQ=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
-    maxSimultaneousImageTargets: 1
+    maxSimultaneousImageTargets: 2
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     modelTargetRecoWhileExtendedTracked: 1
@@ -41,5 +41,5 @@ MonoBehaviour:
     autoStartTracker: 0
   webcam:
     deviceNameSetInEditor: HD WebCam
-    turnOffWebCam: 0
+    turnOffWebCam: 1
     renderTextureLayer: 30

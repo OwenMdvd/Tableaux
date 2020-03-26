@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class Archimed : MonoBehaviour
 {
-    public float posStart;
     public float divide;
     public float angleStart;
     public bool active = true;
+    public bool inverse;
 
-    Transform center;
-    bool first = true;
+    public Transform center;
     float r;
     float a;
     float t;
     Vector3 start;
+    bool doOnce;
 
     // Start is called before the first frame update
     void Start()
     {
-        center = GameObject.FindGameObjectWithTag("Center").transform;
         r = 100;
-        a = angleStart * Mathf.Deg2Rad;
-        start = new Vector3((r * Mathf.Cos(a) / divide) + posStart, 0.1f, (r * Mathf.Sin(a) / divide) + posStart);
+        if (inverse)
+        {
+            a = (angleStart - 60) * Mathf.Deg2Rad;
+        }
+        else
+        {
+            a = angleStart * Mathf.Deg2Rad;
+        }
+        start = new Vector3((r * Mathf.Cos(a) / divide), 0, (r * Mathf.Sin(a) / divide));
         transform.localPosition = start;
     }
 
@@ -31,23 +37,24 @@ public class Archimed : MonoBehaviour
     {
         if (active)
         {
-            if (!first)
+            float x = r * Mathf.Cos(a);
+            float y = r * Mathf.Sin(a);
+            if (inverse)
             {
-                float x = r * Mathf.Cos(a);
-                float y = r * Mathf.Sin(a);
-                a -= 0.01f;
+                a += 0.01f;
                 r -= 0.05f;
-                r = Mathf.Clamp(r, 0, 100);
-                transform.localPosition = new Vector3(x / divide, .1f, y / divide);
             }
             else
             {
-                t += Time.deltaTime / .2f;
-                transform.localPosition = Vector3.Lerp(start, new Vector3(r * Mathf.Cos(a) / divide, 0.1f, r * Mathf.Sin(a) / divide), t);
-                if (t >= 1)
-                {
-                    first = false;
-                }
+                a -= 0.01f;
+                r -= 0.05f;
+            }
+            r = Mathf.Clamp(r, 0, 100);
+            transform.localPosition = new Vector3(x / divide, 0, y / divide);
+            if(!doOnce)
+            {
+                doOnce = true;
+                Debug.Log(transform.localPosition);
             }
         }
         if(r <= 0)
