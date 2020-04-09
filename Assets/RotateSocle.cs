@@ -62,7 +62,6 @@ public class RotateSocle : MonoBehaviour
         if (transform.localEulerAngles.y <= 359 && transform.localEulerAngles.y >= 357 && !active)
         {
             active = true;
-           transform.GetChild(0).GetComponent<TextMesh>().color = Color.green;
             manager.targets.Add(gameObject);
         }
     }

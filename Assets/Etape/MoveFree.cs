@@ -7,6 +7,8 @@ public class MoveFree : MonoBehaviour
     public float mouseSensi = 5;
     public string nomTarget;
     public GameObject[] birds;
+    public GameObject destroyEgg;
+    bool touch;
 
     // Start is called before the first frame update
     void Start()
@@ -20,18 +22,26 @@ public class MoveFree : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (Physics.Raycast(ray, out hit))
             {
                 if (hit.transform.name == nomTarget)
                 {
-                    Debug.Log("Touche");
-                    float vertical = Input.GetAxis("Mouse Y");
-                    float horizontal = Input.GetAxis("Mouse X");
-                    transform.Translate(horizontal * mouseSensi * Time.deltaTime, 0, vertical * mouseSensi * Time.deltaTime);
+                    touch = true;
                 }
             }
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            touch = false;
+        }
+
+        if(touch)
+        {
+            float vertical = Input.GetAxis("Mouse Y");
+            float horizontal = Input.GetAxis("Mouse X");
+            transform.Translate(horizontal * mouseSensi * Time.deltaTime, 0, vertical * mouseSensi * Time.deltaTime);
         }
 
         transform.localPosition = new Vector3(Mathf.Clamp(transform.localPosition.x, -.35f, 0.35f), 0, Mathf.Clamp(transform.localPosition.z, -0.43f, 0.43f));
@@ -46,6 +56,7 @@ public class MoveFree : MonoBehaviour
             item.SetActive(true);
         }
         Destroy(gameObject);
+        Destroy(destroyEgg);
     }
 
     private void OnTriggerEnter(Collider other)

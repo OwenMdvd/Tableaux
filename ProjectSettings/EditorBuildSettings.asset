@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Test2Tableaux.unity
     guid: f929cab09566591419cb4b039f64aa5a
   - enabled: 1
-    path: Assets/Etapes.unity
+    path: Assets/Scenes/Etapes.unity
     guid: 43a2876b0393239479acb3772e502d1d
   m_configObjects: {}

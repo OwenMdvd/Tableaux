@@ -6,6 +6,7 @@ public class BirdsManager : MonoBehaviour
 {
     public BirdsGo[] birds;
     public SpawnNumber[] spirals;
+    public GameObject[] holes;
     // Update is called once per frame
     void Update()
     {
@@ -17,6 +18,10 @@ public class BirdsManager : MonoBehaviour
         foreach (var item in spirals)
         {
             item.enabled = true;
+        }
+        foreach (var item in holes)
+        {
+            item.SetActive(true);
         }
     }
 }
