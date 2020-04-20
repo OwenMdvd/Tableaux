@@ -57,7 +57,7 @@ public class Archimed : MonoBehaviour
                 Debug.Log(transform.localPosition);
             }
         }
-        if(r <= 0)
+        if(r <= 40)
         {
             Destroy(gameObject);
         }

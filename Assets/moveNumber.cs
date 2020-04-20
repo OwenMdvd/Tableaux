@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class moveNumber : MonoBehaviour
 {
@@ -37,9 +38,9 @@ public class moveNumber : MonoBehaviour
                 }
             }
         }
-        transform.localPosition = new Vector3(0, 0, Mathf.Clamp(transform.localPosition.z, -0.43f, lastPos));
+        transform.localPosition = new Vector3(0, 0, Mathf.Clamp(transform.localPosition.z, -0.242f, lastPos));
 
-        if(transform.localPosition.z <= -0.41f)
+        if(transform.localPosition.z <= -0.242f)
         {
             foreach (var item in next)
             {
@@ -48,6 +49,8 @@ public class moveNumber : MonoBehaviour
             GetComponent<MoveFree>().enabled = true;
             Destroy(this);
             Destroy(destroyGo);
+            //destroyGo.GetComponent<VisualEffect>().Stop();
+            //destroyGo.GetComponent<VisualEffect>().SendEvent("Broken");
         }
     }
 }

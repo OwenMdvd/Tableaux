@@ -21,7 +21,6 @@ public class PremierEtape : MonoBehaviour
                 if (hit.transform.name == nomTarget)
                 {
                     active = true;
-                    GetComponent<TextMesh>().color = Color.green;
                     manager.targets.Add(gameObject);
                 }
             }

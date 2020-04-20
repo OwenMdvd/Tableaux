@@ -11,10 +11,23 @@ public class SpawnNumber : MonoBehaviour
     public bool spawnEnable;
     public Transform center;
     public bool inverse;
+    public Animator[] animHole;
+    public GameObject[] birds;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnDelay());
+    }
+
+    public void EnableAnimator()
+    {
+        if(animHole.Length > 0)
+        {
+            foreach (var item in animHole)
+            {
+                item.enabled = true;
+            }
+        }
     }
 
     public void Update()
@@ -31,6 +44,14 @@ public class SpawnNumber : MonoBehaviour
         if(numberSuite.Count > 0)
         {
             StartCoroutine(SpawnDelay());
+        }
+        else
+        {
+            Invoke("EnableAnimator", 15);
+            foreach (var item in birds)
+            {
+                Destroy(item);
+            }
         }
     }
 
