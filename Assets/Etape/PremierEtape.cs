@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,9 +21,15 @@ public class PremierEtape : MonoBehaviour
                 if (hit.transform.name == nomTarget)
                 {
                     active = true;
-                    manager.targets.Add(gameObject);
+                    GetComponentInChildren<Animation>().Play();
+                    //manager.targets.Add(gameObject);
+                    Invoke("ManagerAdd", 3.3f);
                 }
             }
         }
+    }
+    void ManagerAdd()
+    {
+        manager.targets.Add(gameObject);
     }
 }

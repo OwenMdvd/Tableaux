@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -62,7 +62,14 @@ public class RotateSocle : MonoBehaviour
         if (transform.localEulerAngles.y <= 359 && transform.localEulerAngles.y >= 357 && !active)
         {
             active = true;
-            manager.targets.Add(gameObject);
+            GetComponentInChildren<Animation>().Play();
+            //manager.targets.Add(gameObject);
+            Invoke("ManagerAdd", 3.3f);
         }
+    }
+
+    void ManagerAdd()
+    {
+        manager.targets.Add(gameObject);
     }
 }
