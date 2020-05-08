@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +21,7 @@ public class SpawnNumber : MonoBehaviour
 
     public void EnableAnimator()
     {
+        Debug.Log("Animation");
         if(animHole.Length > 0)
         {
             foreach (var item in animHole)

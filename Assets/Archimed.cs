@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,7 +54,6 @@ public class Archimed : MonoBehaviour
             if(!doOnce)
             {
                 doOnce = true;
-                Debug.Log(transform.localPosition);
             }
         }
         if(r <= 40)
