@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,5 +71,10 @@ public class MoveFree : MonoBehaviour
             transform.GetChild(2).gameObject.SetActive(true);
             Destroy(other.gameObject);
         }
+    }
+
+    public void Test()
+    {
+        birds[2].SetActive(true);
     }
 }
