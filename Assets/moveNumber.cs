@@ -10,6 +10,7 @@ public class moveNumber : MonoBehaviour
     public string nomTarget;
     public GameObject[] next;
     public GameObject destroyGo;
+    public Texture2D brokenEgg;
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +49,10 @@ public class moveNumber : MonoBehaviour
             }
             GetComponent<MoveFree>().enabled = true;
             Destroy(this);
-            Destroy(destroyGo);
+            //Destroy(destroyGo);
             //destroyGo.GetComponent<VisualEffect>().Stop();
             //destroyGo.GetComponent<VisualEffect>().SendEvent("Broken");
+            destroyGo.GetComponent<VisualEffect>().SetTexture("MainTex", brokenEgg);
         }
     }
 }

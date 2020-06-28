@@ -64,7 +64,7 @@ public class RotateSocle : MonoBehaviour
             active = true;
             GetComponentInChildren<Animation>().Play();
             //manager.targets.Add(gameObject);
-            Invoke("ManagerAdd", 3.3f);
+            Invoke("ManagerAdd", 3.5f);
         }
     }
 

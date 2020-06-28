@@ -28,7 +28,7 @@ public class Archimed : MonoBehaviour
         {
             a = angleStart * Mathf.Deg2Rad;
         }
-        start = new Vector3((r * Mathf.Cos(a) / divide), 0, (r * Mathf.Sin(a) / divide));
+        start = new Vector3((r * Mathf.Cos(a) / divide), 0.15f, (r * Mathf.Sin(a) / divide));
         transform.localPosition = start;
     }
 
@@ -50,7 +50,7 @@ public class Archimed : MonoBehaviour
                 r -= 0.05f;
             }
             r = Mathf.Clamp(r, 0, 100);
-            transform.localPosition = new Vector3(x / divide, 0, y / divide);
+            transform.localPosition = new Vector3(x / divide, 0.15f, y / divide);
             if(!doOnce)
             {
                 doOnce = true;
