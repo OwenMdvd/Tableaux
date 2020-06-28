@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class SpawnNumber : MonoBehaviour
 {
     public GameObject number;
     public List<string> numberSuite;
+    public List<Texture> spriteSuite = new List<Texture>();
     float t;
     public bool spawnEnable;
     public Transform center;
@@ -42,16 +44,20 @@ public class SpawnNumber : MonoBehaviour
         t = 0;
         Spawn();
         yield return new WaitForSeconds(3);
-        if(numberSuite.Count > 0)
+        if(spriteSuite.Count > 0)
         {
             StartCoroutine(SpawnDelay());
         }
         else
         {
-            Invoke("EnableAnimator", 15);
-            foreach (var item in birds)
+            if (birds.Length > 0)
             {
-                Destroy(item);
+                Invoke("EnableAnimator", 15);
+
+                foreach (var item in birds)
+                {
+                    Destroy(item);
+                }
             }
         }
     }
@@ -64,9 +70,10 @@ public class SpawnNumber : MonoBehaviour
         up.GetComponent<Archimed>().angleStart = 120;
         up.GetComponent<Archimed>().center = center;
         up.GetComponent<Archimed>().inverse = inverse;
-        int random = Random.Range(0, numberSuite.Count);
-        up.GetComponentInChildren<TextMesh>().text = numberSuite[random];
-        numberSuite.RemoveAt(random);
+        int random = Random.Range(0, spriteSuite.Count);
+        //up.GetComponentInChildren<TextMesh>().text = numberSuite[random];
+        up.GetComponentInChildren<VisualEffect>().SetTexture("MainTex",spriteSuite[random]);
+        spriteSuite.RemoveAt(random);
 
         GameObject down = Instantiate(number);
         down.transform.parent = transform;
@@ -74,9 +81,10 @@ public class SpawnNumber : MonoBehaviour
         down.GetComponent<Archimed>().angleStart = 300;
         down.GetComponent<Archimed>().center = center;
         down.GetComponent<Archimed>().inverse = inverse;
-        int random2 = Random.Range(0, numberSuite.Count);
-        down.GetComponentInChildren<TextMesh>().text = numberSuite[random2];
-        numberSuite.RemoveAt(random2);
+        int random2 = Random.Range(0, spriteSuite.Count);
+        //down.GetComponentInChildren<TextMesh>().text = numberSuite[random2];
+        down.GetComponentInChildren<VisualEffect>().SetTexture("MainTex", spriteSuite[random2]);
+        spriteSuite.RemoveAt(random2);
     }
 
     public void RestartScene()
